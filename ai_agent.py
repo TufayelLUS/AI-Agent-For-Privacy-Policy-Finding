@@ -56,6 +56,8 @@ def get_page_content(link, text_only=False):
 
         if not link.startswith('http'):
             link = 'https://' + link
+        if urlparse(link).netloc.replace('www.', '') != domain:
+            continue
         link = urljoin(urlparse(link).scheme + '://' +
                        domain, urlparse(link).path)
         final_links.append(link)
